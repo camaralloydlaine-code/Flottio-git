@@ -31,9 +31,6 @@ export default function TarifsPage() {
           <h1 className="text-2xl md:text-3xl font-sans font-bold text-white mb-1 md:mb-2">Mes Tarifs</h1>
           <p className="text-xs md:text-sm text-gray-400 font-sans">Fixez votre grille tarifaire. Flottio l'utilisera pour vous attribuer des missions.</p>
         </div>
-        <button className="magnetic-btn bg-white text-[#0D0D12] hover:bg-gray-100 transition-colors px-4 py-2 md:px-6 md:py-2.5 rounded-lg md:rounded-full font-bold flex items-center justify-center gap-2 text-sm md:text-base w-full sm:w-auto">
-          <Save size={18} className="w-[18px] h-[18px] md:w-5 md:h-5" /> Sauvegarder
-        </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
@@ -141,6 +138,12 @@ export default function TarifsPage() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="flex justify-end pt-4">
+        <button className="magnetic-btn bg-white text-[#0D0D12] hover:bg-gray-100 transition-colors px-4 py-2 md:px-8 md:py-3 rounded-lg md:rounded-full font-bold flex items-center justify-center gap-2 text-sm md:text-base w-full sm:w-auto shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+          <Save size={18} className="w-[18px] h-[18px] md:w-5 md:h-5" /> Sauvegarder les tarifs
+        </button>
       </div>
     </div>
   );
