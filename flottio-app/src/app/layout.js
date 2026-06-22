@@ -1,0 +1,21 @@
+import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
+import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
+const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" });
+
+export const metadata = {
+  title: "Flottio - Marketplace B2B",
+  description: "Marketplace B2B pour la préparation esthétique de flottes automobiles",
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="fr" className={`${inter.variable} ${playfair.variable} ${jetbrains.variable}`}>
+      <body className="font-sans antialiased text-text bg-background min-h-screen">
+        {children}
+      </body>
+    </html>
+  );
+}
