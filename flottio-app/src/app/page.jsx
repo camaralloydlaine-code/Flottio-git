@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Activity, ArrowRight, ArrowUpRight, BarChart3, CheckCircle2, CircleDot, Clock, ShieldCheck, FileText, Smartphone, Car, Sparkles, X, ChevronRight, ChevronLeft, Check } from 'lucide-react';
+import { Activity, ArrowRight, ArrowUpRight, BarChart3, CheckCircle2, CircleDot, Clock, ShieldCheck, FileText, Smartphone, Car, Sparkles, X, ChevronRight, ChevronLeft, Check, Menu as MenuIcon } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Navbar = () => {
   const navRef = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +28,7 @@ const Navbar = () => {
 
   const handleSmoothScroll = (e, targetId) => {
     e.preventDefault();
+    setIsMobileMenuOpen(false); // Close menu on click
     const target = document.querySelector(targetId);
     if (!target) return;
     
@@ -54,33 +56,82 @@ const Navbar = () => {
   };
 
   return (
-    <nav 
-      ref={navRef}
-      className={`fixed top-6 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 rounded-full px-4 md:px-6 py-3 md:py-4 flex items-center justify-between gap-4 w-[95%] md:w-[90%] max-w-5xl ${
-        isScrolled 
-          ? 'bg-background/80 backdrop-blur-xl border border-primary/10 text-text shadow-lg' 
-          : 'bg-transparent text-background border border-transparent'
-      }`}
-    >
-      <div className="font-sans font-bold tracking-tight text-lg md:text-xl shrink-0">Flottio.</div>
-      <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-        <a href="#features" onClick={(e) => handleSmoothScroll(e, '#features')} className="hover-lift">Fonctionnalités</a>
-        <a href="#philosophie" onClick={(e) => handleSmoothScroll(e, '#philosophie')} className="hover-lift">Philosophie</a>
-        <a href="#protocole" onClick={(e) => handleSmoothScroll(e, '#protocole')} className="hover-lift">Protocole</a>
-        <a href="#tarifs" onClick={(e) => handleSmoothScroll(e, '#tarifs')} className="hover-lift">Tarifs</a>
+    <>
+      <nav 
+        ref={navRef}
+        className={`fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 rounded-full px-4 md:px-6 py-3 md:py-4 flex items-center justify-between gap-4 w-[95%] md:w-[90%] max-w-5xl ${
+          isScrolled 
+            ? 'bg-background/95 border border-primary/10 text-text shadow-xl' 
+            : 'bg-transparent text-background border border-transparent'
+        }`}
+      >
+        <div className="font-sans font-bold tracking-tight text-lg md:text-xl shrink-0">Flottio.</div>
+        
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+          <a href="#features" onClick={(e) => handleSmoothScroll(e, '#features')} className="hover-lift">Fonctionnalités</a>
+          <a href="#philosophie" onClick={(e) => handleSmoothScroll(e, '#philosophie')} className="hover-lift">Philosophie</a>
+          <a href="#protocole" onClick={(e) => handleSmoothScroll(e, '#protocole')} className="hover-lift">Protocole</a>
+          <a href="#tarifs" onClick={(e) => handleSmoothScroll(e, '#tarifs')} className="hover-lift">Tarifs</a>
+        </div>
+
+        <div className="flex items-center gap-2 md:gap-4 shrink-0">
+          <a 
+            href="#cta" 
+            onClick={(e) => handleSmoothScroll(e, '#cta')}
+            className={`magnetic-btn px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold transition-colors overflow-hidden relative group cursor-pointer ${
+            isScrolled || isMobileMenuOpen ? 'bg-accent text-primary' : 'bg-background text-primary'
+          }`}>
+            <span className="relative z-10 flex items-center gap-1.5 md:gap-2 whitespace-nowrap">
+              <span>Inscription</span>
+              <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
+            </span>
+          </a>
+          
+          {/* Mobile Menu Button */}
+          <button 
+            className={`md:hidden p-2 rounded-full border flex items-center justify-center transition-colors ${isMobileMenuOpen || isScrolled ? 'border-primary/20 bg-primary/5 text-primary' : 'border-background/20 bg-background/5 text-background'}`}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={18} /> : <MenuIcon size={18} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Dropdown (Sleek, blur-free, top-down slide) */}
+      <div 
+        className={`fixed inset-x-0 top-0 z-40 bg-background border-b border-primary/10 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] md:hidden ${
+          isMobileMenuOpen ? 'max-h-[100dvh] pt-24 pb-8 shadow-2xl opacity-100' : 'max-h-0 py-0 opacity-0'
+        }`}
+      >
+        <div className="flex flex-col px-6 gap-2">
+          <p className="font-mono text-xs text-accent uppercase tracking-widest font-bold mb-4">Navigation</p>
+          <a href="#features" onClick={(e) => handleSmoothScroll(e, '#features')} className="flex items-center justify-between py-4 border-b border-primary/5 text-xl font-sans font-medium text-primary hover:text-accent transition-colors">
+            <span>Fonctionnalités</span>
+            <ChevronRight size={18} className="text-primary/30" />
+          </a>
+          <a href="#philosophie" onClick={(e) => handleSmoothScroll(e, '#philosophie')} className="flex items-center justify-between py-4 border-b border-primary/5 text-xl font-sans font-medium text-primary hover:text-accent transition-colors">
+            <span>Philosophie</span>
+            <ChevronRight size={18} className="text-primary/30" />
+          </a>
+          <a href="#protocole" onClick={(e) => handleSmoothScroll(e, '#protocole')} className="flex items-center justify-between py-4 border-b border-primary/5 text-xl font-sans font-medium text-primary hover:text-accent transition-colors">
+            <span>Protocole</span>
+            <ChevronRight size={18} className="text-primary/30" />
+          </a>
+          <a href="#tarifs" onClick={(e) => handleSmoothScroll(e, '#tarifs')} className="flex items-center justify-between py-4 text-xl font-sans font-medium text-primary hover:text-accent transition-colors">
+            <span>Tarifs</span>
+            <ChevronRight size={18} className="text-primary/30" />
+          </a>
+          
+          <div className="mt-8 p-4 bg-primary rounded-2xl text-background">
+             <p className="text-sm font-medium mb-3 text-background/80">Rejoignez l'écosystème B2B</p>
+             <button onClick={(e) => handleSmoothScroll(e, '#cta')} className="w-full bg-accent text-primary font-bold py-3 rounded-xl flex justify-center items-center gap-2">
+               S'inscrire maintenant <ArrowRight size={16} />
+             </button>
+          </div>
+        </div>
       </div>
-      <a 
-        href="#cta" 
-        onClick={(e) => handleSmoothScroll(e, '#cta')}
-        className={`magnetic-btn px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold transition-colors overflow-hidden relative group shrink-0 cursor-pointer ${
-        isScrolled ? 'bg-accent text-primary' : 'bg-background text-primary'
-      }`}>
-        <span className="relative z-10 flex items-center gap-1.5 md:gap-2 whitespace-nowrap">
-          <span>Inscription</span>
-          <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
-        </span>
-      </a>
-    </nav>
+    </>
   );
 };
 
@@ -115,14 +166,14 @@ const Hero = () => {
       
       <div className="relative z-10 max-w-5xl text-background">
         <h1 className="flex flex-col gap-2">
-          <span ref={text1Ref} className="font-sans font-bold tracking-tight text-3xl md:text-5xl lg:text-6xl uppercase opacity-0">
+          <span ref={text1Ref} className="font-sans font-bold tracking-tight text-2xl sm:text-3xl md:text-5xl lg:text-6xl uppercase opacity-0">
             La gestion de flotte rencontre
           </span>
-          <span ref={text2Ref} className="font-serif italic text-6xl md:text-8xl lg:text-[140px] leading-[0.9] text-accent opacity-0 block -ml-2">
+          <span ref={text2Ref} className="font-serif italic text-5xl md:text-8xl lg:text-[140px] leading-[0.9] text-accent opacity-0 block -ml-2">
             L'efficacité d'horloger.
           </span>
         </h1>
-        <div ref={ctaRef} className="mt-12 opacity-0 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+        <div ref={ctaRef} className="mt-8 md:mt-12 opacity-0 flex flex-col sm:flex-row items-start sm:items-center gap-6">
           <button 
             onClick={() => {
               const target = document.querySelector('#cta');
@@ -142,11 +193,11 @@ const Hero = () => {
               };
               requestAnimationFrame(animation);
             }} 
-            className="magnetic-btn bg-accent text-primary px-8 py-4 rounded-full font-sans font-bold text-lg flex items-center gap-3 hover:bg-accent/90 transition-colors"
+            className="magnetic-btn bg-accent text-primary px-6 md:px-8 py-3 md:py-4 rounded-full font-sans font-bold text-base md:text-lg flex items-center gap-3 hover:bg-accent/90 transition-colors"
           >
-            Inscription <ArrowRight className="w-5 h-5" />
+            Inscription <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
           </button>
-          <div className="flex items-center gap-3 text-sm font-mono text-background/70 border border-background/20 rounded-full px-5 py-3">
+          <div className="flex items-center gap-3 text-xs md:text-sm font-mono text-background/70 border border-background/20 rounded-full px-4 md:px-5 py-2 md:py-3">
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
             Marketplace B2B Opérationnelle
           </div>
@@ -534,25 +585,35 @@ const Protocol = () => {
 
 const Pricing = () => {
   return (
-    <section id="tarifs" className="py-32 px-6 md:px-16 bg-white relative">
+    <section id="tarifs" className="py-24 md:py-32 px-2 md:px-16 bg-white relative overflow-hidden">
       <div className="max-w-6xl mx-auto flex flex-col items-center">
-        <h2 className="font-serif italic text-4xl md:text-6xl text-primary mb-6 text-center">L'excellence a un prix juste.</h2>
-        <p className="text-lg text-text/60 mb-20 text-center max-w-2xl">Un abonnement logiciel fixe pour centraliser votre flotte. Payez vos lavages à la demande, avec des <strong className="text-primary font-bold">remises volume exclusives</strong> pour vos prestataires.</p>
+        <h2 className="font-serif italic text-3xl md:text-6xl text-primary mb-4 md:mb-6 text-center">L'excellence a un prix juste.</h2>
+        <p className="text-sm md:text-lg text-text/60 mb-12 md:mb-20 text-center max-w-2xl px-4">Un abonnement logiciel fixe pour centraliser votre flotte. Payez vos lavages à la demande, avec des <strong className="text-primary font-bold">remises volume exclusives</strong>.</p>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full items-stretch">
+        {/* Forces 3 columns on all screens with full text */}
+        <div className="grid grid-cols-3 gap-2 md:gap-8 w-full items-stretch">
+          
           {/* Tier 1 */}
-          <div className="bg-background border border-primary/10 rounded-[2.5rem] p-10 shadow-lg hover:shadow-xl transition-shadow flex flex-col">
-            <h3 className="font-sans font-bold text-2xl mb-2 text-primary">Starter</h3>
-            <p className="text-text/60 mb-6 text-sm">Pour les petits parcs automobiles</p>
-            <div className="mb-8">
-              <span className="text-5xl font-bold text-primary">49€</span>
-              <span className="text-text/50"> / mois</span>
+          <div className="bg-background border border-primary/10 rounded-2xl md:rounded-[2.5rem] p-3 md:p-10 shadow-lg hover:shadow-xl transition-shadow flex flex-col relative z-0">
+            <h3 className="font-sans font-bold text-sm md:text-2xl mb-1 md:mb-2 text-primary">Starter</h3>
+            <p className="text-[10px] md:text-sm text-text/60 mb-3 md:mb-6 leading-tight">Pour les petits parcs automobiles</p>
+            <div className="mb-4 md:mb-8 flex flex-col md:flex-row md:items-baseline">
+              <span className="text-lg md:text-5xl font-bold text-primary">49€</span>
+              <span className="text-[9px] md:text-base text-text/50 md:ml-2">/ mois</span>
             </div>
-            <ul className="space-y-4 mb-10 flex-1">
-              <li className="flex items-center gap-3 text-sm text-primary/80"><Check className="w-5 h-5 text-accent"/> De 1 à 10 véhicules</li>
-              <li className="flex items-center gap-3 text-sm text-primary/80"><Check className="w-5 h-5 text-accent"/> Facturation centralisée</li>
-              <li className="flex items-center gap-3 text-sm text-primary/80"><Check className="w-5 h-5 text-accent"/> Accès au réseau de préparateurs</li>
+            
+            <ul className="space-y-2 md:space-y-4 mb-6 md:mb-10 flex-1">
+              <li className="flex items-start gap-1 md:gap-3 text-[10px] md:text-sm text-primary/80 leading-tight">
+                <Check className="w-3 h-3 md:w-5 md:h-5 text-accent shrink-0 mt-0.5 md:mt-0"/> De 1 à 10 véhicules
+              </li>
+              <li className="flex items-start gap-1 md:gap-3 text-[10px] md:text-sm text-primary/80 leading-tight">
+                <Check className="w-3 h-3 md:w-5 md:h-5 text-accent shrink-0 mt-0.5 md:mt-0"/> Facturation centralisée
+              </li>
+              <li className="flex items-start gap-1 md:gap-3 text-[10px] md:text-sm text-primary/80 leading-tight">
+                <Check className="w-3 h-3 md:w-5 md:h-5 text-accent shrink-0 mt-0.5 md:mt-0"/> Accès au réseau de préparateurs
+              </li>
             </ul>
+            
             <button 
               onClick={(e) => {
                 e.preventDefault();
@@ -573,26 +634,35 @@ const Pricing = () => {
                 };
                 requestAnimationFrame(animation);
               }} 
-              className="block w-full bg-primary/5 text-primary hover:bg-primary/10 transition-colors py-4 rounded-full font-bold"
+              className="block w-full bg-primary/5 text-primary hover:bg-primary/10 transition-colors py-2 md:py-4 rounded-xl md:rounded-full font-bold text-[10px] md:text-base mt-auto text-center"
             >
               Commencer
             </button>
           </div>
 
           {/* Tier 2 (Highlighted) */}
-          <div className="bg-primary text-background border border-accent/20 rounded-[3rem] p-12 shadow-2xl transform md:scale-105 flex flex-col relative z-10">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-primary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Recommandé</div>
-            <h3 className="font-sans font-bold text-3xl mb-2">Business</h3>
-            <p className="text-background/60 mb-6 text-sm">Le standard pour les flottes actives</p>
-            <div className="mb-8">
-              <span className="text-6xl font-bold text-accent">99€</span>
-              <span className="text-background/50"> / mois</span>
+          <div className="bg-primary text-background border border-accent/20 rounded-2xl md:rounded-[3rem] p-3 md:p-12 shadow-2xl transform scale-105 flex flex-col relative z-10">
+            <div className="absolute -top-2 md:top-0 left-1/2 -translate-x-1/2 md:-translate-y-1/2 bg-accent text-primary px-2 md:px-4 py-0.5 md:py-1 rounded-full text-[8px] md:text-xs font-bold uppercase tracking-widest whitespace-nowrap">Recommandé</div>
+            <h3 className="font-sans font-bold text-sm md:text-3xl mb-1 md:mb-2 mt-2 md:mt-0">Business</h3>
+            <p className="text-[10px] md:text-sm text-background/60 mb-3 md:mb-6 leading-tight">Le standard pour les flottes actives</p>
+            <div className="mb-4 md:mb-8 flex flex-col md:flex-row md:items-baseline">
+              <span className="text-xl md:text-6xl font-bold text-accent">99€</span>
+              <span className="text-[9px] md:text-base text-background/50 md:ml-2">/ mois</span>
             </div>
-            <ul className="space-y-4 mb-10 flex-1">
-              <li className="flex items-center gap-3 text-sm text-background/90"><Check className="w-5 h-5 text-accent"/> De 11 à 30 véhicules</li>
-              <li className="flex items-center gap-3 text-sm text-background/90"><Check className="w-5 h-5 text-accent"/> Tarifs volume (dès 10 véhicules)</li>
-              <li className="flex items-center gap-3 text-sm text-background/90"><Check className="w-5 h-5 text-accent"/> Historique et traçabilité absolue</li>
-              <li className="flex items-center gap-3 text-sm text-background/90"><Check className="w-5 h-5 text-accent"/> Tableau de bord analytique</li>
+
+            <ul className="space-y-2 md:space-y-4 mb-6 md:mb-10 flex-1">
+              <li className="flex items-start gap-1 md:gap-3 text-[10px] md:text-sm text-background/90 leading-tight">
+                <Check className="w-3 h-3 md:w-5 md:h-5 text-accent shrink-0 mt-0.5 md:mt-0"/> De 11 à 30 véhicules
+              </li>
+              <li className="flex items-start gap-1 md:gap-3 text-[10px] md:text-sm text-background/90 leading-tight">
+                <Check className="w-3 h-3 md:w-5 md:h-5 text-accent shrink-0 mt-0.5 md:mt-0"/> Tarifs volume (dès 10 véhicules)
+              </li>
+              <li className="flex items-start gap-1 md:gap-3 text-[10px] md:text-sm text-background/90 leading-tight">
+                <Check className="w-3 h-3 md:w-5 md:h-5 text-accent shrink-0 mt-0.5 md:mt-0"/> Historique et traçabilité absolue
+              </li>
+              <li className="flex items-start gap-1 md:gap-3 text-[10px] md:text-sm text-background/90 leading-tight">
+                <Check className="w-3 h-3 md:w-5 md:h-5 text-accent shrink-0 mt-0.5 md:mt-0"/> Tableau de bord analytique
+              </li>
             </ul>
             <button 
               onClick={(e) => {
@@ -614,27 +684,36 @@ const Pricing = () => {
                 };
                 requestAnimationFrame(animation);
               }} 
-              className="block magnetic-btn w-full bg-accent text-primary transition-colors py-4 rounded-full font-bold text-lg"
+              className="block magnetic-btn w-full bg-accent text-primary transition-colors py-2 md:py-4 rounded-xl md:rounded-full font-bold text-[10px] md:text-lg mt-auto text-center"
             >
               Essai gratuit de 14 jours
             </button>
           </div>
 
           {/* Tier 3 */}
-          <div className="bg-background border border-primary/10 rounded-[2.5rem] p-10 shadow-lg hover:shadow-xl transition-shadow flex flex-col">
-            <h3 className="font-sans font-bold text-2xl mb-2 text-primary">Pro</h3>
-            <p className="text-text/60 mb-6 text-sm">Pour les grands réseaux</p>
-            <div className="mb-8">
-              <span className="text-5xl font-bold text-primary">199€</span>
-              <span className="text-text/50"> / mois</span>
+          <div className="bg-background border border-primary/10 rounded-2xl md:rounded-[2.5rem] p-3 md:p-10 shadow-lg hover:shadow-xl transition-shadow flex flex-col relative z-0">
+            <h3 className="font-sans font-bold text-sm md:text-2xl mb-1 md:mb-2 text-primary">Pro</h3>
+            <p className="text-[10px] md:text-sm text-text/60 mb-3 md:mb-6 leading-tight">Pour les grands réseaux</p>
+            <div className="mb-4 md:mb-8 flex flex-col md:flex-row md:items-baseline">
+              <span className="text-lg md:text-5xl font-bold text-primary">199€</span>
+              <span className="text-[9px] md:text-base text-text/50 md:ml-2">/ mois</span>
             </div>
-            <ul className="space-y-4 mb-10 flex-1">
-              <li className="flex items-center gap-3 text-sm text-primary/80"><Check className="w-5 h-5 text-accent"/> De 31 à 100 véhicules</li>
-              <li className="flex items-center gap-3 text-sm text-primary/80"><Check className="w-5 h-5 text-accent"/> Tarifs volume maximisés</li>
-              <li className="flex items-center gap-3 text-sm text-primary/80"><Check className="w-5 h-5 text-accent"/> Rapports d'impact écologique</li>
-              <li className="flex items-center gap-3 text-sm text-primary/80"><Check className="w-5 h-5 text-accent"/> Intégration API (logiciels)</li>
+
+            <ul className="space-y-2 md:space-y-4 mb-6 md:mb-10 flex-1">
+              <li className="flex items-start gap-1 md:gap-3 text-[10px] md:text-sm text-primary/80 leading-tight">
+                <Check className="w-3 h-3 md:w-5 md:h-5 text-accent shrink-0 mt-0.5 md:mt-0"/> De 31 à 100 véhicules
+              </li>
+              <li className="flex items-start gap-1 md:gap-3 text-[10px] md:text-sm text-primary/80 leading-tight">
+                <Check className="w-3 h-3 md:w-5 md:h-5 text-accent shrink-0 mt-0.5 md:mt-0"/> Tarifs volume maximisés
+              </li>
+              <li className="flex items-start gap-1 md:gap-3 text-[10px] md:text-sm text-primary/80 leading-tight">
+                <Check className="w-3 h-3 md:w-5 md:h-5 text-accent shrink-0 mt-0.5 md:mt-0"/> Rapports d'impact écologique
+              </li>
+              <li className="flex items-start gap-1 md:gap-3 text-[10px] md:text-sm text-primary/80 leading-tight">
+                <Check className="w-3 h-3 md:w-5 md:h-5 text-accent shrink-0 mt-0.5 md:mt-0"/> Intégration API (logiciels)
+              </li>
             </ul>
-            <Link href="/inscription" className="block text-center w-full bg-primary/5 text-primary hover:bg-primary/10 transition-colors py-4 rounded-full font-bold">Nous contacter</Link>
+            <Link href="/inscription" className="block text-center w-full bg-primary/5 text-primary hover:bg-primary/10 transition-colors py-2 md:py-4 rounded-xl md:rounded-full font-bold text-[10px] md:text-base mt-auto">Nous contacter</Link>
           </div>
         </div>
         

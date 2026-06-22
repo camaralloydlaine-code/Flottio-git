@@ -12,7 +12,7 @@ export default function RadarPage() {
     <div className="max-w-5xl mx-auto space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-heading font-bold text-white mb-2">Radar B2B</h1>
+          <h1 className="text-3xl font-sans font-bold text-white mb-2">Radar B2B</h1>
           <p className="text-gray-400 font-sans">Appels d'offres et commandes de flottes dans votre secteur.</p>
         </div>
       </div>

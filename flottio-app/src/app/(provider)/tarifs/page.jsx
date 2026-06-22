@@ -28,7 +28,7 @@ export default function TarifsPage() {
     <div className="max-w-4xl mx-auto space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-heading font-bold text-white mb-2">Mes Tarifs</h1>
+          <h1 className="text-3xl font-sans font-bold text-white mb-2">Mes Tarifs</h1>
           <p className="text-gray-400 font-sans">Fixez votre grille tarifaire. Flottio l'utilisera pour vous attribuer des missions.</p>
         </div>
         <button className="magnetic-btn bg-white text-[#0D0D12] hover:bg-gray-100 transition-colors px-6 py-2.5 rounded-full font-bold flex items-center gap-2">
@@ -38,7 +38,7 @@ export default function TarifsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-6">
-          <h2 className="text-xl font-heading font-bold text-white flex items-center gap-2">
+          <h2 className="text-xl font-sans font-bold text-white flex items-center gap-2">
             <div className="w-8 h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center font-mono text-sm border border-accent/20">1</div>
             Prestations de Base (Citadine)
           </h2>
@@ -97,7 +97,7 @@ export default function TarifsPage() {
         </div>
 
         <div className="space-y-6">
-          <h2 className="text-xl font-heading font-bold text-white flex items-center gap-2">
+          <h2 className="text-xl font-sans font-bold text-white flex items-center gap-2">
             <div className="w-8 h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center font-mono text-sm border border-accent/20">2</div>
             Tarifs B2B (Remises sur Volume)
           </h2>

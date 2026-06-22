@@ -14,7 +14,7 @@ export default function FacturationPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-heading font-semibold text-white mb-1">Facturation</h1>
+          <h1 className="text-2xl font-sans font-semibold text-white mb-1">Facturation</h1>
           <p className="text-gray-400 text-sm">Consultez et téléchargez vos factures mensuelles.</p>
         </div>
         <button className="bg-surface border border-border text-white hover:bg-white/5 transition-colors px-4 py-2.5 rounded-lg font-medium text-sm flex items-center gap-2">

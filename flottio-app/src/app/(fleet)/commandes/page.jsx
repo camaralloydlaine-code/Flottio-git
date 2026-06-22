@@ -13,7 +13,7 @@ export default function CommandesPage() {
     <div className="max-w-6xl mx-auto space-y-8">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-heading font-bold text-white mb-2">Commandes B2B</h1>
+          <h1 className="text-3xl font-sans font-bold text-white mb-2">Commandes B2B</h1>
           <p className="text-gray-400 font-sans">Gérez vos appels d'offres et suivez les interventions sur votre flotte.</p>
         </div>
         <Link 
@@ -53,7 +53,7 @@ export default function CommandesPage() {
                 </span>
               </div>
               <div>
-                <h3 className="font-heading font-bold text-xl text-white group-hover:text-accent transition-colors">{cmd.volume}</h3>
+                <h3 className="font-sans font-bold text-xl text-white group-hover:text-accent transition-colors">{cmd.volume}</h3>
                 <p className="font-sans text-sm text-gray-400 mt-1">{cmd.type}</p>
               </div>
             </div>

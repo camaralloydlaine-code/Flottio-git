@@ -5,7 +5,7 @@ export default function OnboardingPartenairePage() {
   return (
     <div className="flex flex-col gap-6">
       <div className="text-center mb-2">
-        <h1 className="text-3xl font-heading font-bold text-white mb-2">Profil Préparateur</h1>
+        <h1 className="text-3xl font-sans font-bold text-white mb-2">Profil Préparateur</h1>
         <p className="text-gray-400 font-sans">Finalisez la configuration de votre espace partenaire.</p>
       </div>
 

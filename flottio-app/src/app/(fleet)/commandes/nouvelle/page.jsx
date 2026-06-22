@@ -32,7 +32,7 @@ export default function NouvelleCommandePage() {
           <ArrowLeft size={20} />
         </Link>
         <div>
-          <h1 className="text-3xl font-heading font-bold text-white mb-1">Nouvelle Commande</h1>
+          <h1 className="text-3xl font-sans font-bold text-white mb-1">Nouvelle Commande</h1>
           <p className="text-gray-400 font-sans text-sm">Créez un appel d'offres pour vos partenaires préparateurs.</p>
         </div>
       </div>
@@ -52,7 +52,7 @@ export default function NouvelleCommandePage() {
           <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="flex items-center gap-3 mb-8">
               <Car className="text-accent" size={24} />
-              <h2 className="text-2xl font-heading font-bold text-white">Sélectionnez les véhicules</h2>
+              <h2 className="text-2xl font-sans font-bold text-white">Sélectionnez les véhicules</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -88,7 +88,7 @@ export default function NouvelleCommandePage() {
           <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="flex items-center gap-3 mb-8">
               <Droplets className="text-accent" size={24} />
-              <h2 className="text-2xl font-heading font-bold text-white">Niveau de Prestation</h2>
+              <h2 className="text-2xl font-sans font-bold text-white">Niveau de Prestation</h2>
             </div>
             
             <div className="space-y-4">
@@ -110,7 +110,7 @@ export default function NouvelleCommandePage() {
           <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="flex items-center gap-3 mb-8">
               <MapPin className="text-accent" size={24} />
-              <h2 className="text-2xl font-heading font-bold text-white">Logistique et Accès</h2>
+              <h2 className="text-2xl font-sans font-bold text-white">Logistique et Accès</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -147,7 +147,7 @@ export default function NouvelleCommandePage() {
           <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div className="flex items-center gap-3 mb-8">
               <Navigation className="text-accent" size={24} />
-              <h2 className="text-2xl font-heading font-bold text-white">Récapitulatif & Publication</h2>
+              <h2 className="text-2xl font-sans font-bold text-white">Récapitulatif & Publication</h2>
             </div>
             
             <div className="bg-surface border border-border p-6 rounded-2xl space-y-4">

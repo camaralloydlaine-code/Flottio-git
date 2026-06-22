@@ -5,7 +5,7 @@ export default function InscriptionFlottePage() {
   return (
     <div className="flex flex-col gap-6">
       <div className="text-center mb-4">
-        <h1 className="text-3xl font-heading font-bold text-white mb-2">Rejoignez Flottio</h1>
+        <h1 className="text-3xl font-sans font-bold text-white mb-2">Rejoignez Flottio</h1>
         <p className="text-gray-400 font-sans">Le système de gestion premium pour les flottes professionnelles.</p>
       </div>
 

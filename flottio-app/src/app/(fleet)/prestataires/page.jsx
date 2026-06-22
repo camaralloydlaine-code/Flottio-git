@@ -15,7 +15,7 @@ export default function PrestatairesPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-heading font-semibold text-white mb-1">Prestataires</h1>
+          <h1 className="text-2xl font-sans font-semibold text-white mb-1">Prestataires</h1>
           <p className="text-gray-400 text-sm">Annuaire de vos partenaires de préparation esthétique.</p>
         </div>
       </div>

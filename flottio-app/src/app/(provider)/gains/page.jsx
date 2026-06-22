@@ -6,7 +6,7 @@ export default function GainsPage() {
     <div className="max-w-5xl mx-auto space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-heading font-bold text-white mb-2">Gains & Facturation</h1>
+          <h1 className="text-3xl font-sans font-bold text-white mb-2">Gains & Facturation</h1>
           <p className="text-gray-400 font-sans">Suivez vos revenus et générez vos factures automatiquement.</p>
         </div>
       </div>
@@ -40,7 +40,7 @@ export default function GainsPage() {
 
       <div className="glass-card mt-8 overflow-hidden">
         <div className="p-6 border-b border-border flex items-center justify-between">
-          <h2 className="text-xl font-heading font-bold text-white">Historique des missions</h2>
+          <h2 className="text-xl font-sans font-bold text-white">Historique des missions</h2>
           <button className="flex items-center gap-2 text-sm font-sans font-medium text-accent hover:text-white transition-colors">
             <Download size={16} /> Exporter (CSV)
           </button>

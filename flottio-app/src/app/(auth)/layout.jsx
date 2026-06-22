@@ -11,7 +11,7 @@ export default function AuthLayout({ children }) {
         <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
           <span className="font-bold text-[#0D0D12]">F</span>
         </div>
-        <span className="text-xl font-heading font-semibold text-white tracking-tight">Flottio</span>
+        <span className="text-xl font-sans font-semibold text-white tracking-tight">Flottio</span>
       </Link>
 
       {/* Main Content wrapper */}

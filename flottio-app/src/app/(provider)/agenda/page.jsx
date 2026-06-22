@@ -9,7 +9,7 @@ export default function AgendaPage() {
     <div className="max-w-6xl mx-auto space-y-8 h-full flex flex-col">
       <div className="flex items-center justify-between shrink-0">
         <div>
-          <h1 className="text-3xl font-heading font-bold text-white mb-2">Mon Agenda</h1>
+          <h1 className="text-3xl font-sans font-bold text-white mb-2">Mon Agenda</h1>
           <p className="text-gray-400 font-sans">Visualisez et organisez vos créneaux de préparation.</p>
         </div>
         <div className="flex items-center gap-4">

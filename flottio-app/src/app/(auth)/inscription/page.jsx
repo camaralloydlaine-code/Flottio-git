@@ -5,7 +5,7 @@ export default function InscriptionPortalPage() {
   return (
     <div className="flex flex-col gap-6 w-full max-w-4xl mx-auto">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-heading font-bold text-white mb-4">Bienvenue sur Flottio</h1>
+        <h1 className="text-4xl font-sans font-bold text-white mb-4">Bienvenue sur Flottio</h1>
         <p className="text-gray-400 font-sans text-lg">Choisissez votre profil pour commencer.</p>
       </div>
 
@@ -18,7 +18,7 @@ export default function InscriptionPortalPage() {
             <Car size={32} className="text-gray-400 group-hover:text-accent transition-colors" />
           </div>
           <div>
-            <h2 className="text-2xl font-heading font-bold text-white mb-2 group-hover:text-accent transition-colors">Gestionnaire de Flotte</h2>
+            <h2 className="text-2xl font-sans font-bold text-white mb-2 group-hover:text-accent transition-colors">Gestionnaire de Flotte</h2>
             <p className="text-gray-400 font-sans text-sm">Vous gérez un parc de véhicules et cherchez des prestataires de confiance pour leur préparation.</p>
           </div>
           <div className="mt-auto flex items-center gap-2 text-white font-sans font-bold text-sm bg-surface px-6 py-3 rounded-full group-hover:bg-accent group-hover:text-[#0D0D12] transition-all">
@@ -34,7 +34,7 @@ export default function InscriptionPortalPage() {
             <Settings2 size={32} className="text-gray-400 group-hover:text-accent transition-colors" />
           </div>
           <div>
-            <h2 className="text-2xl font-heading font-bold text-white mb-2 group-hover:text-accent transition-colors">Préparateur Esthétique</h2>
+            <h2 className="text-2xl font-sans font-bold text-white mb-2 group-hover:text-accent transition-colors">Préparateur Esthétique</h2>
             <p className="text-gray-400 font-sans text-sm">Vous êtes un professionnel indépendant et souhaitez recevoir des missions de flottes B2B.</p>
           </div>
           <div className="mt-auto flex items-center gap-2 text-white font-sans font-bold text-sm bg-surface px-6 py-3 rounded-full group-hover:bg-accent group-hover:text-[#0D0D12] transition-all">

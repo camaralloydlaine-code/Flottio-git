@@ -8,7 +8,7 @@ export default function InscriptionPartenairePage() {
         <div className="w-16 h-16 mx-auto bg-primary/5 rounded-full flex items-center justify-center mb-6 border border-accent/20 text-accent">
           <Sparkles className="w-8 h-8"/>
         </div>
-        <h1 className="text-3xl font-heading font-bold text-white mb-2">Devenez Partenaire Flottio</h1>
+        <h1 className="text-3xl font-sans font-bold text-white mb-2">Devenez Partenaire Flottio</h1>
         <p className="text-gray-400 font-sans">Développez votre clientèle B2B et automatisez vos encaissements.</p>
       </div>
 

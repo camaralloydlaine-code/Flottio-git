@@ -8,7 +8,7 @@ export default function MissionsPage() {
   return (
     <div className="max-w-5xl mx-auto space-y-8">
       <div>
-        <h1 className="text-3xl font-heading font-bold text-white mb-2">Mes Missions</h1>
+        <h1 className="text-3xl font-sans font-bold text-white mb-2">Mes Missions</h1>
         <p className="text-gray-400 font-sans">Suivi et exécution de vos missions de préparation.</p>
       </div>
 
@@ -37,7 +37,7 @@ export default function MissionsPage() {
                 </span>
                 <span className="text-sm font-sans text-gray-400">Demandé il y a 2h</span>
               </div>
-              <h2 className="text-2xl font-heading font-bold text-white">Flotte Sixt - Lot de 5 véhicules</h2>
+              <h2 className="text-2xl font-sans font-bold text-white">Flotte Sixt - Lot de 5 véhicules</h2>
               <p className="text-gray-400 font-sans mt-1">Nettoyage Intégral (Flotte) • Contact sur place: M. Dupont</p>
             </div>
             <div className="text-right">

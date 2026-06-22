@@ -34,7 +34,7 @@ export default function CommandeDetailPage() {
         </Link>
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-heading font-semibold text-white">{order.reference}</h1>
+            <h1 className="text-2xl font-sans font-semibold text-white">{order.reference}</h1>
             <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${statusConfig.color} border border-current/20`}>
               {statusConfig.label}
             </span>
