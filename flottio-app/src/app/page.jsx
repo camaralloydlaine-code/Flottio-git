@@ -469,6 +469,10 @@ const ProtocolCard = ({ index, number, title, desc, renderVisual, isLast }) => {
   const cardRef = useRef(null);
 
   useEffect(() => {
+    // If it's the last card, we don't pin it or shrink it.
+    // It will just scroll up naturally with the flow of the document.
+    if (isLast) return;
+
     const ctx = gsap.context(() => {
       // Setup pin effect
       ScrollTrigger.create({
@@ -479,21 +483,20 @@ const ProtocolCard = ({ index, number, title, desc, renderVisual, isLast }) => {
         end: "+=100%", 
       });
 
-      // Shrink and blur effect only if it's not the last card
-      if (!isLast) {
-        gsap.to(cardRef.current, {
-          scale: 0.9,
-          filter: "blur(20px)",
-          opacity: 0.5,
-          scrollTrigger: {
-            trigger: cardRef.current,
-            start: "top top",
-            end: "+=100%",
-            scrub: true,
-          }
-        });
-      }
+      // Shrink and blur effect
+      gsap.to(cardRef.current, {
+        scale: 0.9,
+        filter: "blur(20px)",
+        opacity: 0.5,
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: "top top",
+          end: "+=100%",
+          scrub: true,
+        }
+      });
     }, cardRef);
+    
     return () => ctx.revert();
   }, [isLast]);
 
