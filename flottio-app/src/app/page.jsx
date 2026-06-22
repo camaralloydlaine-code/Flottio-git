@@ -465,37 +465,37 @@ const Philosophy = () => {
 };
 
 // Protocol Cards Stack
-const ProtocolCard = ({ index, number, title, desc, renderVisual }) => {
+const ProtocolCard = ({ index, number, title, desc, renderVisual, isLast }) => {
   const cardRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Setup pin and stack effect
+      // Setup pin effect
       ScrollTrigger.create({
         trigger: cardRef.current,
         start: "top top",
         pin: true,
         pinSpacing: false,
-        end: "+=100%", // Depends on how many cards
+        end: "+=100%", 
       });
 
-      // Shrink and blur effect when next card comes up
-      // We would ideally link this to the next card's scroll position
-      gsap.to(cardRef.current, {
-        scale: 0.9,
-        filter: "blur(20px)",
-        opacity: 0.5,
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: "top top",
-          end: "+=100%",
-          scrub: true,
-        }
-      });
-
+      // Shrink and blur effect only if it's not the last card
+      if (!isLast) {
+        gsap.to(cardRef.current, {
+          scale: 0.9,
+          filter: "blur(20px)",
+          opacity: 0.5,
+          scrollTrigger: {
+            trigger: cardRef.current,
+            start: "top top",
+            end: "+=100%",
+            scrub: true,
+          }
+        });
+      }
     }, cardRef);
     return () => ctx.revert();
-  }, []);
+  }, [isLast]);
 
   return (
     <div 
@@ -521,7 +521,7 @@ const ProtocolCard = ({ index, number, title, desc, renderVisual }) => {
 
 const Protocol = () => {
   return (
-    <section id="protocole" className="relative w-full bg-background pt-24 pb-[100vh]">
+    <section id="protocole" className="relative w-full bg-background pt-24 pb-24 md:pb-32">
       <ProtocolCard 
         index={1} 
         number="01" 
@@ -562,6 +562,7 @@ const Protocol = () => {
         number="03" 
         title="Traçabilité Absolue" 
         desc="Chaque intervention est documentée, horodatée et archivée. Un dossier complet par véhicule, indispensable pour vos audits et contrats de leasing."
+        isLast={true}
         renderVisual={() => (
           <svg className="w-full h-32 px-10 text-accent" viewBox="0 0 1000 100" preserveAspectRatio="none">
             <path 
