@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { 
   LayoutDashboard, 
   ClipboardList, 
@@ -11,6 +13,8 @@ import {
 } from "lucide-react";
 
 export function FleetSidebar({ isOpen, onClose }) {
+  const pathname = usePathname();
+
   return (
     <>
       {/* Mobile Backdrop */}
@@ -38,11 +42,11 @@ export function FleetSidebar({ isOpen, onClose }) {
         </div>
 
         <nav className="flex-1 space-y-2 overflow-y-auto">
-          <NavItem href="/tableau-de-bord" icon={<LayoutDashboard size={20} />} label="Tableau de bord" active onClick={onClose} />
-          <NavItem href="/commandes" icon={<ClipboardList size={20} />} label="Commandes" onClick={onClose} />
-          <NavItem href="/vehicules" icon={<Car size={20} />} label="Véhicules" onClick={onClose} />
-          <NavItem href="/prestataires" icon={<Users size={20} />} label="Prestataires" onClick={onClose} />
-          <NavItem href="/facturation" icon={<Receipt size={20} />} label="Facturation" onClick={onClose} />
+          <NavItem href="/tableau-de-bord" icon={<LayoutDashboard size={20} />} label="Tableau de bord" active={pathname === "/tableau-de-bord"} onClick={onClose} />
+          <NavItem href="/commandes" icon={<ClipboardList size={20} />} label="Commandes" active={pathname === "/commandes"} onClick={onClose} />
+          <NavItem href="/vehicules" icon={<Car size={20} />} label="Véhicules" active={pathname === "/vehicules"} onClick={onClose} />
+          <NavItem href="/prestataires" icon={<Users size={20} />} label="Prestataires" active={pathname === "/prestataires"} onClick={onClose} />
+          <NavItem href="/facturation" icon={<Receipt size={20} />} label="Facturation" active={pathname === "/facturation"} onClick={onClose} />
         </nav>
 
         <div className="mt-auto space-y-2 pt-4 border-t border-border shrink-0">
@@ -50,7 +54,7 @@ export function FleetSidebar({ isOpen, onClose }) {
             <p className="text-xs text-gray-400 mb-1">Plan actuel</p>
             <p className="text-sm font-semibold text-white">Enterprise</p>
           </div>
-          <NavItem href="/parametres" icon={<Settings size={20} />} label="Paramètres" onClick={onClose} />
+          <NavItem href="/parametres" icon={<Settings size={20} />} label="Paramètres" active={pathname === "/parametres"} onClick={onClose} />
           <button className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 transition-colors w-full text-left">
             <LogOut size={20} />
             Déconnexion
@@ -78,18 +82,3 @@ function NavItem({ href, icon, label, active, onClick }) {
   );
 }
 
-function NavItem({ href, icon, label, active }) {
-  return (
-    <Link 
-      href={href}
-      className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
-        active 
-          ? "bg-accent/10 text-accent" 
-          : "text-gray-400 hover:text-white hover:bg-white/5"
-      }`}
-    >
-      {icon}
-      {label}
-    </Link>
-  );
-}
