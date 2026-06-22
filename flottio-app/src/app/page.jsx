@@ -747,7 +747,7 @@ const CTA = () => {
               <Car className="w-5 h-5 md:w-8 md:h-8" />
             </div>
             <h3 className="font-sans font-bold text-sm md:text-4xl mb-2 md:mb-4">Gestionnaires de Flottes</h3>
-            <p className="text-background/60 mb-6 md:mb-10 text-[10px] md:text-lg leading-snug md:leading-relaxed hidden sm:block">Centralisez vos demandes, réduisez vos coûts et bénéficiez d'une traçabilité absolue pour chaque véhicule de votre parc automobile.</p>
+            <p className="text-background/60 mb-6 md:mb-10 text-[10px] md:text-lg leading-snug md:leading-relaxed">Centralisez vos demandes, réduisez vos coûts et bénéficiez d'une traçabilité absolue pour chaque véhicule de votre parc automobile.</p>
           </div>
           <Link href="/inscription-flotte" className="magnetic-btn w-full bg-accent text-primary px-3 py-2 md:px-8 md:py-4 rounded-xl md:rounded-full font-sans font-bold text-[10px] md:text-lg flex items-center justify-center gap-1 md:gap-3 hover:bg-accent/90 transition-colors relative z-10 text-center">
             <span className="hidden sm:inline">Espace Flottes</span>
@@ -764,7 +764,7 @@ const CTA = () => {
               <Sparkles className="w-5 h-5 md:w-8 md:h-8" />
             </div>
             <h3 className="font-sans font-bold text-sm md:text-4xl mb-2 md:mb-4">Préparateurs Esthétiques</h3>
-            <p className="text-text/60 mb-6 md:mb-10 text-[10px] md:text-lg leading-snug md:leading-relaxed hidden sm:block">Développez votre clientèle B2B, optimisez votre planning et garantissez des paiements rapides, automatisés et sécurisés.</p>
+            <p className="text-text/60 mb-6 md:mb-10 text-[10px] md:text-lg leading-snug md:leading-relaxed">Développez votre clientèle B2B, optimisez votre planning et garantissez des paiements rapides, automatisés et sécurisés.</p>
           </div>
           <Link href="/inscription-partenaire" className="magnetic-btn w-full bg-primary text-accent px-3 py-2 md:px-8 md:py-4 rounded-xl md:rounded-full font-sans font-bold text-[10px] md:text-lg flex items-center justify-center gap-1 md:gap-3 hover:bg-primary/90 transition-colors relative z-10 text-center">
             <span className="hidden sm:inline">Espace Partenaires</span>
