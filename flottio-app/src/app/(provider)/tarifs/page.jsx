@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { CheckCircle2, Save } from "lucide-react";
+import { CheckCircle2, Save, Plus } from "lucide-react";
 
 export default function TarifsPage() {
   const [tarifs, setTarifs] = useState({
@@ -13,6 +13,11 @@ export default function TarifsPage() {
       berline: 5,
       suv: 10,
       utilitaire: 15
+    },
+    options: {
+      shampooing: 40,
+      poils: 15,
+      lustrage: 80
     }
   });
 
@@ -22,6 +27,10 @@ export default function TarifsPage() {
 
   const handleMajorationChange = (key, value) => {
     setTarifs(prev => ({ ...prev, majoration: { ...prev.majoration, [key]: Number(value) } }));
+  };
+
+  const handleOptionChange = (key, value) => {
+    setTarifs(prev => ({ ...prev, options: { ...prev.options, [key]: Number(value) } }));
   };
 
   return (
@@ -134,6 +143,82 @@ export default function TarifsPage() {
                   className="w-20 md:w-24 bg-surface border border-border rounded-lg pl-5 pr-5 md:pl-6 md:pr-6 py-1.5 md:py-2 text-white font-sans text-right focus:outline-none focus:border-accent text-sm"
                 />
                 <span className="absolute right-2 md:right-3 top-1.5 md:top-2.5 text-gray-400 text-sm">%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="space-y-4 md:space-y-6 md:col-span-2">
+          <h2 className="text-lg md:text-xl font-sans font-bold text-white flex items-center gap-2">
+            <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center font-mono text-xs md:text-sm border border-accent/20">3</div>
+            Options Supplémentaires
+          </h2>
+          
+          <div className="glass-card p-4 md:p-6 space-y-4 md:space-y-5">
+            <p className="text-[10px] md:text-sm font-sans text-gray-400 mb-2 md:mb-4">Facturez des suppléments pour des prestations spécifiques ou des véhicules très sales.</p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+              <div className="space-y-4 md:space-y-5">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-sans font-bold text-white text-xs md:text-sm">Shampooing des Sièges</p>
+                    <p className="font-sans text-[10px] md:text-xs text-gray-500 mt-0.5 md:mt-1">Tissus et moquettes</p>
+                  </div>
+                  <div className="relative">
+                    <span className="absolute left-2 md:left-3 top-1.5 md:top-2.5 text-gray-400 text-sm">+</span>
+                    <input 
+                      type="number" 
+                      value={tarifs.options.shampooing}
+                      onChange={(e) => handleOptionChange("shampooing", e.target.value)}
+                      className="w-20 md:w-24 bg-surface border border-border rounded-lg pl-5 pr-5 md:pl-6 md:pr-6 py-1.5 md:py-2 text-white font-sans text-right focus:outline-none focus:border-accent text-sm"
+                    />
+                    <span className="absolute right-2 md:right-3 top-1.5 md:top-2.5 text-gray-400 text-sm">€</span>
+                  </div>
+                </div>
+                <div className="h-px bg-border w-full md:hidden"></div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-sans font-bold text-white text-xs md:text-sm">Poils d'animaux</p>
+                    <p className="font-sans text-[10px] md:text-xs text-gray-500 mt-0.5 md:mt-1">Supplément temps</p>
+                  </div>
+                  <div className="relative">
+                    <span className="absolute left-2 md:left-3 top-1.5 md:top-2.5 text-gray-400 text-sm">+</span>
+                    <input 
+                      type="number" 
+                      value={tarifs.options.poils}
+                      onChange={(e) => handleOptionChange("poils", e.target.value)}
+                      className="w-20 md:w-24 bg-surface border border-border rounded-lg pl-5 pr-5 md:pl-6 md:pr-6 py-1.5 md:py-2 text-white font-sans text-right focus:outline-none focus:border-accent text-sm"
+                    />
+                    <span className="absolute right-2 md:right-3 top-1.5 md:top-2.5 text-gray-400 text-sm">€</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4 md:space-y-5">
+                <div className="h-px bg-border w-full md:hidden"></div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-sans font-bold text-white text-xs md:text-sm">Lustrage Express</p>
+                    <p className="font-sans text-[10px] md:text-xs text-gray-500 mt-0.5 md:mt-1">Cire de finition brillante</p>
+                  </div>
+                  <div className="relative">
+                    <span className="absolute left-2 md:left-3 top-1.5 md:top-2.5 text-gray-400 text-sm">+</span>
+                    <input 
+                      type="number" 
+                      value={tarifs.options.lustrage}
+                      onChange={(e) => handleOptionChange("lustrage", e.target.value)}
+                      className="w-20 md:w-24 bg-surface border border-border rounded-lg pl-5 pr-5 md:pl-6 md:pr-6 py-1.5 md:py-2 text-white font-sans text-right focus:outline-none focus:border-accent text-sm"
+                    />
+                    <span className="absolute right-2 md:right-3 top-1.5 md:top-2.5 text-gray-400 text-sm">€</span>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-center pt-2">
+                  <button className="flex items-center gap-2 text-accent hover:text-white transition-colors text-xs md:text-sm font-sans font-bold bg-accent/5 hover:bg-accent/10 px-4 py-2 rounded-lg border border-accent/10 w-full justify-center">
+                    <Plus size={16} /> Ajouter une option
+                  </button>
+                </div>
               </div>
             </div>
           </div>
