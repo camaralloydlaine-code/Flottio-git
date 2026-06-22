@@ -735,37 +735,41 @@ const Pricing = () => {
 
 const CTA = () => {
   return (
-    <section id="cta" className="py-32 px-6 md:px-16 bg-background flex flex-col items-center justify-center">
-      <h2 className="font-serif italic text-5xl md:text-7xl text-primary mb-16 text-center">Rejoignez l'écosystème Flottio.</h2>
+    <section id="cta" className="py-24 md:py-32 px-4 md:px-16 bg-background flex flex-col items-center justify-center">
+      <h2 className="font-serif italic text-3xl md:text-7xl text-primary mb-12 md:mb-16 text-center leading-tight">Rejoignez l'écosystème Flottio.</h2>
       
-      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="w-full max-w-6xl grid grid-cols-2 gap-3 md:gap-8">
         {/* Espace Gestionnaire */}
-        <div className="bg-primary text-background p-10 md:p-14 rounded-[3rem] flex flex-col justify-between group shadow-2xl relative overflow-hidden">
-          <div className="absolute -right-10 -top-10 w-40 h-40 bg-accent/10 rounded-full blur-3xl group-hover:bg-accent/20 transition-colors"></div>
+        <div className="bg-primary text-background p-4 md:p-14 rounded-2xl md:rounded-[3rem] flex flex-col justify-between group shadow-2xl relative overflow-hidden">
+          <div className="absolute -right-5 md:-right-10 -top-5 md:-top-10 w-20 md:w-40 h-20 md:h-40 bg-accent/10 rounded-full blur-xl md:blur-3xl group-hover:bg-accent/20 transition-colors"></div>
           <div className="relative z-10">
-            <div className="w-16 h-16 rounded-full bg-accent/20 text-accent flex items-center justify-center mb-8 border border-accent/30">
-              <Car className="w-8 h-8" />
+            <div className="w-10 h-10 md:w-16 md:h-16 rounded-full bg-accent/20 text-accent flex items-center justify-center mb-4 md:mb-8 border border-accent/30 shrink-0">
+              <Car className="w-5 h-5 md:w-8 md:h-8" />
             </div>
-            <h3 className="font-sans font-bold text-3xl md:text-4xl mb-4">Gestionnaires de Flottes</h3>
-            <p className="text-background/60 mb-10 text-lg leading-relaxed">Centralisez vos demandes, réduisez vos coûts et bénéficiez d'une traçabilité absolue pour chaque véhicule de votre parc automobile.</p>
+            <h3 className="font-sans font-bold text-sm md:text-4xl mb-2 md:mb-4">Gestionnaires de Flottes</h3>
+            <p className="text-background/60 mb-6 md:mb-10 text-[10px] md:text-lg leading-snug md:leading-relaxed hidden sm:block">Centralisez vos demandes, réduisez vos coûts et bénéficiez d'une traçabilité absolue pour chaque véhicule de votre parc automobile.</p>
           </div>
-          <Link href="/inscription-flotte" className="magnetic-btn w-full bg-accent text-primary px-8 py-4 rounded-full font-sans font-bold text-lg flex items-center justify-center gap-3 hover:bg-accent/90 transition-colors relative z-10">
-            Espace Flottes <ArrowUpRight className="w-5 h-5" />
+          <Link href="/inscription-flotte" className="magnetic-btn w-full bg-accent text-primary px-3 py-2 md:px-8 md:py-4 rounded-xl md:rounded-full font-sans font-bold text-[10px] md:text-lg flex items-center justify-center gap-1 md:gap-3 hover:bg-accent/90 transition-colors relative z-10 text-center">
+            <span className="hidden sm:inline">Espace Flottes</span>
+            <span className="sm:hidden">S'inscrire</span>
+            <ArrowUpRight className="w-3 h-3 md:w-5 md:h-5" />
           </Link>
         </div>
 
         {/* Espace Préparateur */}
-        <div className="bg-white border border-primary/10 text-primary p-10 md:p-14 rounded-[3rem] flex flex-col justify-between group shadow-xl relative overflow-hidden">
-          <div className="absolute -left-10 -bottom-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+        <div className="bg-white border border-primary/10 text-primary p-4 md:p-14 rounded-2xl md:rounded-[3rem] flex flex-col justify-between group shadow-xl relative overflow-hidden">
+          <div className="absolute -left-5 md:-left-10 -bottom-5 md:-bottom-10 w-20 md:w-40 h-20 md:h-40 bg-primary/5 rounded-full blur-xl md:blur-3xl group-hover:bg-primary/10 transition-colors"></div>
           <div className="relative z-10">
-            <div className="w-16 h-16 rounded-full bg-primary/5 text-primary flex items-center justify-center mb-8 border border-primary/10">
-              <Sparkles className="w-8 h-8" />
+            <div className="w-10 h-10 md:w-16 md:h-16 rounded-full bg-primary/5 text-primary flex items-center justify-center mb-4 md:mb-8 border border-primary/10 shrink-0">
+              <Sparkles className="w-5 h-5 md:w-8 md:h-8" />
             </div>
-            <h3 className="font-sans font-bold text-3xl md:text-4xl mb-4">Préparateurs Esthétiques</h3>
-            <p className="text-text/60 mb-10 text-lg leading-relaxed">Développez votre clientèle B2B, optimisez votre planning et garantissez des paiements rapides, automatisés et sécurisés.</p>
+            <h3 className="font-sans font-bold text-sm md:text-4xl mb-2 md:mb-4">Préparateurs Esthétiques</h3>
+            <p className="text-text/60 mb-6 md:mb-10 text-[10px] md:text-lg leading-snug md:leading-relaxed hidden sm:block">Développez votre clientèle B2B, optimisez votre planning et garantissez des paiements rapides, automatisés et sécurisés.</p>
           </div>
-          <Link href="/inscription-partenaire" className="magnetic-btn w-full bg-primary text-accent px-8 py-4 rounded-full font-sans font-bold text-lg flex items-center justify-center gap-3 hover:bg-primary/90 transition-colors relative z-10">
-            Espace Partenaires <ArrowUpRight className="w-5 h-5" />
+          <Link href="/inscription-partenaire" className="magnetic-btn w-full bg-primary text-accent px-3 py-2 md:px-8 md:py-4 rounded-xl md:rounded-full font-sans font-bold text-[10px] md:text-lg flex items-center justify-center gap-1 md:gap-3 hover:bg-primary/90 transition-colors relative z-10 text-center">
+            <span className="hidden sm:inline">Espace Partenaires</span>
+            <span className="sm:hidden">Rejoindre</span>
+            <ArrowUpRight className="w-3 h-3 md:w-5 md:h-5" />
           </Link>
         </div>
       </div>
